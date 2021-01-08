@@ -2,6 +2,7 @@
 
 require_relative "slimer/version"
 
+require_relative "slimer/database"
 require_relative "slimer/group_configurator"
 
 require "logger"
@@ -12,10 +13,12 @@ module Slimer
 
   DEFAULT_GROUP = "general"
   DEFAULT_SLUG = "slimer"
+  DEFAULT_DATABASE_URL = "sqlite://./slimer.db"
 
   DEFAULTS = {
     slug: DEFAULT_SLUG,
-    groups: Set.new([DEFAULT_GROUP])
+    groups: Set.new([DEFAULT_GROUP]),
+    database_url: DEFAULT_DATABASE_URL
   }.freeze
 
   def self.options
@@ -24,6 +27,21 @@ module Slimer
 
   def self.options=(opts)
     @options = DEFAULTS.merge(opts)
+  end
+
+  def self.db
+    database_url_from_env = ENV.delete("SLIMER_DATABASE_URL") || ENV.delete("DATABASE_URL")
+
+    if database_url_from_env
+      @options[:database_url] = database_url_from_env
+      return @db = Database.connection(
+        options[:database_url] || DEFAULT_DATABASE_URL
+      )
+    end
+
+    @db ||= Database.connection(
+      options[:database_url] || DEFAULT_DATABASE_URL
+    )
   end
 
   def self.slug(new_slug = DEFAULT_SLUG)
@@ -50,7 +68,7 @@ module Slimer
   end
 
   def self.logger
-    @logger ||= Logger.new(STDOUT, level: Logger::Info)
+    @logger ||= Logger.new(STDOUT, level: Logger::INFO)
   end
 
   def self.logger=(logger)
@@ -65,5 +83,6 @@ module Slimer
   def self.reset!
     @options = DEFAULTS.dup
     @groups = DEFAULTS[:groups].dup
+    @db = nil
   end
 end

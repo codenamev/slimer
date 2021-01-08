@@ -27,9 +27,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "sequel", ">= 5.40"
   spec.add_dependency "sidekiq", ">= 6.1"
   # Sidekiq depends on rack, but include it in case they drop support
   spec.add_dependency "rack", "~> 2.0"
 
+  spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "rubocop"
 end

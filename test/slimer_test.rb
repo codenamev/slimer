@@ -19,7 +19,8 @@ class SlimerTest < Minitest::Test
     Slimer.options = { slug: "bogus" }
     expected_options = {
       slug: "bogus",
-      groups: Set.new([ Slimer::DEFAULT_GROUP ])
+      groups: Set.new([ Slimer::DEFAULT_GROUP ]),
+      database_url: Slimer::DEFAULT_DATABASE_URL
     }
     assert_equal expected_options, Slimer.options
   end
@@ -51,5 +52,39 @@ class SlimerTest < Minitest::Test
       config.groups [:ruby, :rails, "ruby/parsers"]
     end
     assert_equal Set.new(["ruby", "rails", "ruby/parsers"]), Slimer.groups
+  end
+
+  def test_db
+    require "sequel"
+
+    database = Slimer.db
+    assert_instance_of Sequel::SQLite::Database, database
+  end
+
+  def test_db_with_env
+    require "sequel/core"
+
+    test_db_url = "sqlite://./tmp/slimer_test.db"
+    ENV["SLIMER_DATABASE_URL"] = test_db_url
+
+    database = Slimer.db
+    assert_equal test_db_url, Slimer.options[:database_url]
+    assert_instance_of Sequel::SQLite::Database, database
+
+    test_db_url = "sqlite://./tmp/slimer_test2.db"
+    ENV["SLIMER_DATABASE_URL"] = nil
+    ENV["DATABASE_URL"] = test_db_url
+
+    database = Slimer.db
+    assert_equal test_db_url, Slimer.options[:database_url]
+    assert_instance_of Sequel::SQLite::Database, database
+  end
+
+  def test_db_connection_auto_migrates
+    database = Slimer.db
+
+    Slimer::Database::REQUIRED_TABLES.each do |t|
+      assert database.table_exists?(t)
+    end
   end
 end

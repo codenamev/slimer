@@ -3,6 +3,7 @@ PATH
   specs:
     slimer (0.1.0)
       rack (~> 2.0)
+      sequel (>= 5.40)
       sidekiq (>= 6.1)
 
 GEM
@@ -32,10 +33,12 @@ GEM
     rubocop-ast (1.4.0)
       parser (>= 2.7.1.5)
     ruby-progressbar (1.11.0)
+    sequel (5.40.0)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
+    sqlite3 (1.4.2)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -46,6 +49,7 @@ DEPENDENCIES
   rake (~> 13.0)
   rubocop (~> 0.80)
   slimer!
+  sqlite3
 
 BUNDLED WITH
    2.2.3
