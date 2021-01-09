@@ -68,7 +68,7 @@ module Slimer
   end
 
   def self.logger
-    @logger ||= Logger.new(STDOUT, level: Logger::INFO)
+    @logger ||= Logger.new($stdout, level: Logger::INFO)
   end
 
   def self.logger=(logger)

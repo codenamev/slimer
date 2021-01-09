@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Slimer is an app that allows you to consume any data with ease"
   spec.homepage      = "https://github.com/codenamev/slimer"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0") # rubocop:disable Gemspec/RequiredRubyVersion
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
