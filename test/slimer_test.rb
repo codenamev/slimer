@@ -19,7 +19,7 @@ class SlimerTest < Minitest::Test
     Slimer.options = { slug: "bogus" }
     expected_options = {
       slug: "bogus",
-      groups: Set.new([ Slimer::DEFAULT_GROUP ]),
+      groups: Set.new([Slimer::DEFAULT_GROUP]),
       database_url: Slimer::DEFAULT_DATABASE_URL
     }
     assert_equal expected_options, Slimer.options
@@ -31,7 +31,7 @@ class SlimerTest < Minitest::Test
 
   def test_groups_setter
     Slimer.groups = [:bogus, "awesome", "bogus"]
-    assert_equal Set.new(["bogus", "awesome"]), Slimer.groups
+    assert_equal Set.new(%w[bogus awesome]), Slimer.groups
   end
 
   def test_groups_nested_string_setter

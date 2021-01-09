@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Slimer is an app that allows you to consume any data with ease"
   spec.homepage      = "https://github.com/codenamev/slimer"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
@@ -32,6 +32,6 @@ Gem::Specification.new do |spec|
   # Sidekiq depends on rack, but include it in case they drop support
   spec.add_dependency "rack", "~> 2.0"
 
-  spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "sqlite3"
 end
