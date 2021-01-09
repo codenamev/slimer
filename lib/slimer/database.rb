@@ -41,7 +41,7 @@ module Slimer
     private
 
     def create_substances
-      connection.create_table(:substances) do
+      connection.create_table(:substances, ignore_index_errors: true) do
         primary_key :id
         String :uid
         String :group
@@ -49,8 +49,8 @@ module Slimer
         String :description
         String :payload, text: true
         String :payload_type
+        full_text_index :payload
       end
-      connection.alter_table(:substances) { add_full_text_index :payload } if connection.supports_index_parsing?
     end
 
     def create_api_keys
