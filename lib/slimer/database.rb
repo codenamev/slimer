@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sequel/core"
+require "sequel/model"
 
 module Slimer
   # @abstract Wraps Sequel.connect to easily interface with the Slimer database
@@ -16,12 +17,17 @@ module Slimer
     end
 
     def self.connection(url)
-      new(url).connection
+      db = new(url)
+      # Sequel::Model requires a connection before you can subclass.  Now that
+      # we have a connection, require the models.
+      db.load_models
+      db.connection
     end
 
     def connection
       @connection ||= Sequel.connect(url)
     end
+    alias connect connection
 
     def resolve_missing_tables!
       return if migrated?
@@ -36,6 +42,11 @@ module Slimer
 
     def migrated?
       REQUIRED_TABLES.all? { |t| connection.table_exists?(t) }
+    end
+
+    def load_models
+      require_relative "api_key" unless defined? ApiKey
+      require_relative "substance" unless defined? Substance
     end
 
     private
