@@ -1,5 +1,7 @@
 # Slimer
 
+![build status](https://github.com/codenamev/slimer/workflows/Tests/badge.svg)
+
 A minimalist consumer with an endless appetite.
 
 ## Installation
