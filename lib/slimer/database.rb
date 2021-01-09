@@ -30,6 +30,17 @@ module Slimer
     end
 
     def create!
+      create_substances unless connection.table_exists?(:substances)
+      create_api_keys unless connection.table_exists?(:api_keys)
+    end
+
+    def migrated?
+      REQUIRED_TABLES.all? { |t| connection.table_exists?(t) }
+    end
+
+    private
+
+    def create_substances
       connection.create_table(:substances) do
         primary_key :id
         String :uid
@@ -38,18 +49,16 @@ module Slimer
         String :description
         String :payload, text: true
         String :payload_type
-        full_text_index :payload if connection.supports_text_index?
-      end unless connection.table_exists?(:substances)
+      end
+      connection.alter_table(:substances) { add_full_text_index :payload } if connection.supports_index_parsing?
+    end
 
+    def create_api_keys
       connection.create_table(:api_keys) do
         primary_key :id
         String :name
         String :token
-      end unless connection.table_exists?(:api_keys)
-    end
-
-    def migrated?
-      REQUIRED_TABLES.all? { |t| connection.table_exists?(t) }
+      end
     end
   end
 end
