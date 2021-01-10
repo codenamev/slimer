@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   # Sidekiq depends on rack, but include it in case they drop support
   spec.add_dependency "rack", "~> 2.0"
 
+  spec.add_development_dependency "minitest-stub-const"
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "sqlite3"
 end

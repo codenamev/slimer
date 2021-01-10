@@ -67,6 +67,14 @@ module Slimer
     yield self
   end
 
+  def self.configure_sidekiq_client(&block)
+    Sidekiq.configure_client(&block)
+  end
+
+  def self.configure_sidekiq_server(&block)
+    Sidekiq.configure_server(&block)
+  end
+
   def self.logger
     @logger ||= Logger.new($stdout, level: Logger::INFO)
   end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "minitest/stub_const"
 
 class SlimerTest < Minitest::Test
   def setup
@@ -59,5 +60,23 @@ class SlimerTest < Minitest::Test
 
     database = Slimer.db
     assert_instance_of Sequel::SQLite::Database, database
+  end
+
+  def test_configure_sidekiq_client
+    mock = Minitest::Mock.new
+    mock.expect(:configure_client, proc {})
+    Slimer.stub_const(:Sidekiq, mock) do
+      Slimer.configure(&:configure_sidekiq_client)
+    end
+    assert mock.verify
+  end
+
+  def test_configure_sidekiq_server
+    mock = Minitest::Mock.new
+    mock.expect(:configure_server, proc {})
+    Slimer.stub_const(:Sidekiq, mock) do
+      Slimer.configure(&:configure_sidekiq_server)
+    end
+    assert mock.verify
   end
 end
