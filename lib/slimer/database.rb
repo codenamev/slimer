@@ -20,8 +20,9 @@ module Slimer
       db = new(url)
       # Sequel::Model requires a connection before you can subclass.  Now that
       # we have a connection, require the models.
+      connection = db.connection
       db.load_models
-      db.connection
+      connection
     end
 
     def connection
@@ -45,8 +46,8 @@ module Slimer
     end
 
     def load_models
-      require_relative "api_key" unless defined? ApiKey
-      require_relative "substance" unless defined? Substance
+      require_relative "api_key" unless defined?(ApiKey)
+      require_relative "substance" unless defined?(Substance)
     end
 
     private
@@ -55,11 +56,11 @@ module Slimer
       connection.create_table(:substances, ignore_index_errors: true) do
         primary_key :id
         String :uid
-        String :group
+        String :group, default: Slimer::DEFAULT_GROUP
         Array :tags
         String :description
         String :payload, text: true
-        String :payload_type
+        String :payload_type, default: "json"
         full_text_index :payload
       end
     end
