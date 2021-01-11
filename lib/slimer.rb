@@ -14,11 +14,13 @@ module Slimer
   DEFAULT_GROUP = "general"
   DEFAULT_SLUG = "slimer"
   DEFAULT_DATABASE_URL = "sqlite://./slimer.db"
+  DEFAULT_SIDEKIQ_QUEUE = "slimer"
 
   DEFAULTS = {
     slug: DEFAULT_SLUG,
     groups: Set.new([DEFAULT_GROUP]),
-    database_url: DEFAULT_DATABASE_URL
+    database_url: DEFAULT_DATABASE_URL,
+    sidekiq_queue: DEFAULT_SIDEKIQ_QUEUE
   }.freeze
 
   def self.options
@@ -91,6 +93,16 @@ module Slimer
   def self.reset!
     @options = DEFAULTS.dup
     @groups = DEFAULTS[:groups].dup
+    truncate_tables!
     @db = nil
   end
+
+  def self.truncate_tables!
+    Slimer::ApiKey.truncate if defined? Slimer::ApiKey
+    Slimer::Substance.truncate if defined? Slimer::Substance
+  end
 end
+
+# These all depend on Slimer.options to exist, so we'll load hem after our
+# initial module is setup.
+require_relative "slimer/workers"

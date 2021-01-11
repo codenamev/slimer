@@ -21,7 +21,8 @@ class SlimerTest < Minitest::Test
     expected_options = {
       slug: "bogus",
       groups: Set.new([Slimer::DEFAULT_GROUP]),
-      database_url: Slimer::DEFAULT_DATABASE_URL
+      database_url: Slimer::DEFAULT_DATABASE_URL,
+      sidekiq_queue: Slimer::DEFAULT_SIDEKIQ_QUEUE
     }
     assert_equal expected_options, Slimer.options
   end
