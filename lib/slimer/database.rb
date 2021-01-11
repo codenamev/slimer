@@ -57,7 +57,6 @@ module Slimer
         primary_key :id
         String :uid
         String :group, default: Slimer::DEFAULT_GROUP
-        Array :tags
         String :description
         String :payload, text: true
         String :payload_type, default: "json"
