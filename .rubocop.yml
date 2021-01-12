@@ -1,6 +1,14 @@
 AllCops:
   NewCops: enable
 
+Metrics/AbcSize:
+  Exclude:
+    - 'test/**/*_test.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*_test.rb'
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes

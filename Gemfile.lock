@@ -3,6 +3,7 @@ PATH
   specs:
     slimer (0.1.0)
       rack (~> 2.0)
+      rake (~> 13.0)
       sequel (>= 5.40)
       sidekiq (>= 6.1)
 

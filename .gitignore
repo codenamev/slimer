@@ -5,6 +5,9 @@
 /doc/
 /pkg/
 /spec/reports/
-**/test_db.log
 /tmp/*
+
+**/test_db.log
+**/slimer.db
+
 .ruby-version
