@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class SlimerApiKeyTest < Minitest::Test
+class SlimerRakeTest < Minitest::Test
   def setup
     Slimer.reset!
     Slimer.db

@@ -9,14 +9,25 @@ class SlimerIngestSubstanceWorkerTest < Minitest::Test
     Slimer.db
   end
 
-  # This test is here to simply verify a direct call to the model ensures a
-  # connection to the database.
-  def test_count
+  def test_only_payload
     initial_count = Slimer::Substance.count
 
     Sidekiq::Testing.inline! do
       Slimer::Workers::IngestSubstance.perform_async("{}")
       assert_equal initial_count + 1, Slimer::Substance.count
+      assert_equal Slimer::DEFAULT_GROUP, Slimer::Substance.last.group
+      refute_nil Slimer::Substance.last.uid
+    end
+  end
+
+  def test_payload_with_group
+    initial_count = Slimer::Substance.count
+
+    Sidekiq::Testing.inline! do
+      Slimer::Workers::IngestSubstance.perform_async("{}", :ruby)
+      assert_equal initial_count + 1, Slimer::Substance.count
+      assert_equal "ruby", Slimer::Substance.last.group
+      refute_nil Slimer::Substance.last.uid
     end
   end
 end

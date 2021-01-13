@@ -1,5 +1,7 @@
 AllCops:
   NewCops: enable
+  Exclude:
+    - "lib/slimer/web/csfr_protection.rb"
 
 Metrics/AbcSize:
   Exclude:

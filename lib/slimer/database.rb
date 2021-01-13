@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require "json"
 require "sequel/core"
 require "sequel/model"
+require "sequel/plugins/serialization"
 
 module Slimer
   # @abstract Wraps Sequel.connect to easily interface with the Slimer database
