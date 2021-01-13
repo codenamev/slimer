@@ -48,8 +48,8 @@ module Slimer
     end
 
     def load_models
-      require_relative "api_key" unless defined?(ApiKey)
-      require_relative "substance" unless defined?(Substance)
+      require_relative "api_key" unless defined?(Slimer::ApiKey)
+      require_relative "substance" unless defined?(Slimer::Substance)
     end
 
     private

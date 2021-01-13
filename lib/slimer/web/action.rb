@@ -33,6 +33,8 @@ module Slimer
       api_key = route_params.delete(:api_key)
       return false unless api_key
 
+      # Ensure a connection to the DB has been made and models loaded
+      Slimer.db
       Slimer::ApiKey.where(token: api_key).count.positive?
     end
 
