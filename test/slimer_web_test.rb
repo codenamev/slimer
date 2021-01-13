@@ -16,6 +16,7 @@ class SlimerWebTest < Minitest::Test
     ENV["RACK_ENV"] = "test"
     Slimer.reset!
     Slimer::Web.middlewares.clear
+    Slimer.db
   end
 
   def test_configure_via_set
