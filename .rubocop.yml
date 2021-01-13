@@ -2,14 +2,15 @@ AllCops:
   NewCops: enable
   Exclude:
     - "lib/slimer/web/csfr_protection.rb"
+    - "**/.ruby-version"
 
 Metrics/AbcSize:
   Exclude:
-    - 'test/**/*_test.rb'
+    - "test/**/*_test.rb"
 
 Metrics/MethodLength:
   Exclude:
-    - 'test/**/*_test.rb'
+    - "test/**/*_test.rb"
 
 Style/StringLiterals:
   Enabled: true
