@@ -27,13 +27,8 @@ Slimer uses Sidekiq to line up it's meals.
 ```ruby
 # By default, Slimer stores everything in the "general" group.
 # Adding more groups here will make them available for consumption at:
-#   /:slimer-slug/:api_key/:group/consume
+#   /:api_key/:group/consume
 Slimer.configure do |config|
-  # You can configure a custom slug here (default: `slimer`), but it will be
-  # dropped if mounting the rack app like in Rails routes:
-  #   mount Slimer::Web, at: "datachug"
-  slug "datachug"
-
   # Top-level group
   group :bookmarks
   # Nested group

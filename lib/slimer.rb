@@ -12,12 +12,10 @@ module Slimer
   class Error < StandardError; end
 
   DEFAULT_GROUP = "general"
-  DEFAULT_SLUG = "slimer"
   DEFAULT_DATABASE_URL = "sqlite://./slimer.db"
   DEFAULT_SIDEKIQ_QUEUE = "slimer"
 
   DEFAULTS = {
-    slug: DEFAULT_SLUG,
     groups: Set.new([DEFAULT_GROUP]),
     database_url: DEFAULT_DATABASE_URL,
     sidekiq_queue: DEFAULT_SIDEKIQ_QUEUE
@@ -44,12 +42,6 @@ module Slimer
     @db ||= Database.connection(
       options[:database_url] || DEFAULT_DATABASE_URL
     )
-  end
-
-  def self.slug(new_slug = DEFAULT_SLUG)
-    return @slug unless new_slug
-
-    @slug = new_slug
   end
 
   def self.groups(new_groups = nil)

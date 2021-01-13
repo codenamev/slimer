@@ -17,9 +17,7 @@ class SlimerTest < Minitest::Test
   end
 
   def test_options_setter
-    Slimer.options = { slug: "bogus" }
     expected_options = {
-      slug: "bogus",
       groups: Set.new([Slimer::DEFAULT_GROUP]),
       database_url: Slimer::DEFAULT_DATABASE_URL,
       sidekiq_queue: Slimer::DEFAULT_SIDEKIQ_QUEUE
@@ -50,7 +48,6 @@ class SlimerTest < Minitest::Test
 
   def test_configure
     Slimer.configure do |config|
-      config.slug :bogus
       config.groups [:ruby, :rails, "ruby/parsers"]
     end
     assert_equal Set.new(["ruby", "rails", "ruby/parsers"]), Slimer.groups
