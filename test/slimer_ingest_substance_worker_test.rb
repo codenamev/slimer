@@ -30,4 +30,17 @@ class SlimerIngestSubstanceWorkerTest < Minitest::Test
       refute_nil Slimer::Substance.last.uid
     end
   end
+
+  def test_payload_with_metadata
+    initial_count = Slimer::Substance.count
+    metadata = { tags: ["logs"] }
+
+    Sidekiq::Testing.inline! do
+      Slimer::Workers::IngestSubstance.perform_async("{}", :ruby, metadata)
+      assert_equal initial_count + 1, Slimer::Substance.count
+      assert_equal "ruby", Slimer::Substance.last.group
+      assert_equal metadata.transform_keys(&:to_s), Slimer::Substance.last.metadata
+      refute_nil Slimer::Substance.last.uid
+    end
+  end
 end

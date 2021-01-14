@@ -59,10 +59,10 @@ module Slimer
         primary_key :id
         String :uid
         String :group, default: Slimer::DEFAULT_GROUP
-        String :description
         String :payload, text: true
-        String :payload_type, default: "json"
+        String :metadata, text: true
         full_text_index :payload
+        full_text_index :metadata
       end
     end
 

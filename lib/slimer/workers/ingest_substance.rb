@@ -9,11 +9,11 @@ module Slimer
       include Sidekiq::Worker
       sidekiq_options queue: Slimer.options[:sidekiq_queue]
 
-      def perform(payload, group = Slimer::DEFAULT_GROUP, description = nil)
+      def perform(payload, group = Slimer::DEFAULT_GROUP, metadta = nil)
         Slimer::Substance.create(
           payload: payload,
           group: group,
-          description: description,
+          metadata: metadta,
           uid: SecureRandom.uuid
         )
       end

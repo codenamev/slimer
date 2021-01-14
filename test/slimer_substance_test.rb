@@ -36,4 +36,17 @@ class SlimerSubstanceTest < Minitest::Test
       assert_equal substance.transform_keys(&:to_s), Slimer::Substance.last.payload
     end
   end
+
+  def test_consume_with_metadata
+    substance = { thing: "this" }
+    metadata = { tags: ["logs"] }
+    initial_count = Slimer::Substance.count
+
+    Sidekiq::Testing.inline! do
+      Slimer::Substance.consume substance, metadata: metadata
+      assert_equal initial_count + 1, Slimer::Substance.count
+      assert_equal metadata.transform_keys(&:to_s), Slimer::Substance.last.metadata
+      assert_equal substance.transform_keys(&:to_s), Slimer::Substance.last.payload
+    end
+  end
 end

@@ -3,16 +3,18 @@
 module Slimer
   # A data object Slimer consumes
   class Substance < Sequel::Model
-    plugin :serialization, :json, :payload
+    plugin :serialization
+    serialize_attributes :json, :payload
+    serialize_attributes :json, :metadata
 
     def self.consume(payload, options = {})
-      description = options.delete(:description)
+      metadata = options.delete(:metadata)
       group = options.delete(:group) || Slimer::DEFAULT_GROUP
 
       Slimer::Workers::IngestSubstance.perform_async(
         payload,
         group,
-        description
+        metadata
       )
     end
   end
