@@ -6,7 +6,7 @@ A minimalist consumer with an endless appetite.
 
 <figcaption>
   <img src="https://github.com/codenamev/slimer/raw/main/examples/slimer-banner.jpg" alt="Slimer" />
-  <small>Created by <a href="https://dribbble.com/amungioli">Anthony Mungioli</a></small>
+  <small>Slimer character created by <a href="https://dribbble.com/amungioli">Anthony Mungioli</a></small>
 </figcaption>
 
 ## Installation
