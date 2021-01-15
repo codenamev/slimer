@@ -31,24 +31,3 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Run Tests for Ruby ${{ matrix.ruby }} on ${{ matrix.os }}
         run: bundle exec rake test
-  lint:
-    strategy:
-      fail-fast: true
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6.6'
-      - uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: bundle-use-ruby-ubuntu-latest-ruby-2.6.6-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            bundle-use-ruby-ubuntu-latest-ruby-2.6.6-
-      - name: bundle install
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Run Lint Check for Latest ruby
-        run: bundle exec rake rubocop
