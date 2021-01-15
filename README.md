@@ -4,6 +4,11 @@
 
 A minimalist consumer with an endless appetite.
 
+![Slimer](https://github.com/codenamev/slimer/raw/master/examples/slimer-banner.jpg)
+<figcaption>
+  <small>Created by <a href="https://dribbble.com/amungioli">Anthony Mungioli</a></small>
+</figcaption>
+
 ## Installation
 
 Add this line to your application's Gemfile:
