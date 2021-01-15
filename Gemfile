@@ -16,4 +16,6 @@ group :development, :test do
   gem "rubocop", "~> 1.8"
   gem "rubocop-minitest"
   gem "rubocop-rake"
+  # TODO: Figure out why the GitHub action needs this.
+  gem "rubocop-rspec"
 end
