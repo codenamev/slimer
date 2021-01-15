@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - "lib/slimer/web/csfr_protection.rb"
     - "**/.ruby-version"
+  TargetRubyVersion: 2.6
 
 Metrics/AbcSize:
   Exclude:

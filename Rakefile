@@ -4,6 +4,11 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 
 require_relative "lib/slimer"
+
+# Since the Slimer tasks establish a DB connection, update the logger so that we
+# don't pollute STDOUT with table checks.
+Slimer.logger = Logger.new("#{Dir.pwd}/rake.log", level: Logger::WARN)
+
 require_relative "lib/slimer/tasks"
 
 Rake::TestTask.new(:test) do |t|

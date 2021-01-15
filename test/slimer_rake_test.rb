@@ -29,12 +29,14 @@ class SlimerRakeTest < Minitest::Test
 
     $stdin = STDIN
 
+    # rubocop:disable Layout/TrailingWhitespace
     expected_output = <<~OUTPUT
       Enter a name for this API key: 
       You must enter a name for this API key.
       Enter a name for this API key: 
       Your new Slimer API key for "hulk": abc123
     OUTPUT
+    # rubocop:enable Layout/TrailingWhitespace
     assert_equal expected_output, output
     assert stdin_mock.verify
   end

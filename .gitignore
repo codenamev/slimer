@@ -7,7 +7,7 @@
 /spec/reports/
 /tmp/*
 
-**/test_db.log
+**/*.log
 **/slimer.db
 
 .ruby-version
