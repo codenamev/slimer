@@ -81,7 +81,8 @@ module Slimer
     get "/:api_key/:group/consume" do
       forbidden unless authorized?
 
-      substance_params = params.select { |k, _v| !["group"].include?(k.to_s) } # rubocop:disable Style/InverseMethods
+      exclude_keys = ["group"]
+      substance_params = params.select { |k, _v| !exclude_keys.include?(k.to_s) } # rubocop:disable Style/InverseMethods
       Slimer::Substance.consume(substance_params, group: params["group"])
 
       json(:ok)
@@ -90,7 +91,8 @@ module Slimer
     post "/:api_key/:group/consume" do
       forbidden unless authorized?
 
-      substance_params = params.select { |k, _v| !["group"].include?(k.to_s) } # rubocop:disable Style/InverseMethods
+      exclude_keys = ["group"]
+      substance_params = params.select { |k, _v| !exclude_keys.include?(k.to_s) } # rubocop:disable Style/InverseMethods
       Slimer::Substance.consume(substance_params, group: params["group"])
 
       json(:ok)

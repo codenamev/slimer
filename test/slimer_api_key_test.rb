@@ -28,7 +28,6 @@ class SlimerApiKeyTest < Minitest::Test
     Object.stub_const(:SecureRandom, random_mock) do
       new_api_key = Slimer::ApiKey.generate "hulk"
       assert_equal initial_api_key_count + 1, Slimer::ApiKey.count
-      assert_equal "hulk", new_api_key.name
       refute_empty new_api_key.token
       refute_equal new_api_key.token, existing_api_key.token
     end

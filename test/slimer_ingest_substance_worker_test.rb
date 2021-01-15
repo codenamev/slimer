@@ -40,7 +40,6 @@ class SlimerIngestSubstanceWorkerTest < Minitest::Test
       assert_equal initial_count + 1, Slimer::Substance.count
       assert_equal "ruby", Slimer::Substance.last.group
       assert_equal metadata.transform_keys(&:to_s), Slimer::Substance.last.metadata
-      refute_nil Slimer::Substance.last.uid
     end
   end
 end
