@@ -46,15 +46,33 @@ module Slimer
 
   def self.groups(new_groups = nil)
     self.groups = new_groups if new_groups
-    @groups
+    options[:groups]
   end
 
   def self.groups=(new_groups = Set.new(options[:groups].dup))
-    @groups = Set.new(new_groups.map(&:to_s))
+    @options[:groups] = Set.new(new_groups.map(&:to_s))
   end
 
   def self.group(new_group, &block)
-    @groups += GroupConfigurator.group(new_group, &block).all
+    options[:groups] += GroupConfigurator.group(new_group, &block).all
+  end
+
+  def self.database_url(db_url = nil)
+    self.database_url = db_url if db_url
+    options[:database_url]
+  end
+
+  def self.database_url=(db_url)
+    @options[:database_url] = db_url
+  end
+
+  def self.sidekiq_queue(new_queue = nil)
+    self.sidekiq_queue = new_queue if new_queue
+    options[:sidekiq_queue]
+  end
+
+  def self.sidekiq_queue=(new_queue)
+    @options[:sidekiq_queue] = new_queue
   end
 
   def self.configure
@@ -84,7 +102,6 @@ module Slimer
 
   def self.reset!
     @options = DEFAULTS.dup
-    @groups = DEFAULTS[:groups].dup
     truncate_tables!
     @db = nil
   end
