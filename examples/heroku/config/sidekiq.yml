@@ -1,0 +1,13 @@
+---
+:verbose: false
+:concurrency: 10
+:timeout: 25
+
+:queues:
+  - critical
+  - default
+  - slimer
+  - low
+
+production:
+  :concurrency: 25

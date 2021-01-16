@@ -1,0 +1,12 @@
+{
+  "name": "Slimer",
+  "description": "",
+  "keywords": ["Ruby", "Redis", "data"],
+  "website": "https://github.com/codenamev/slimer",
+  "env": {
+  },
+  "addons": [
+    "heroku-postgresql",
+    "heroku-redis"
+  ]
+}
