@@ -67,7 +67,7 @@ module Slimer
     end
 
     def create_api_keys
-      connection.create_table(:api_keys) do
+      connection.create_table(:api_keys, ignore_index_errors: true) do
         primary_key :id
         String :name
         String :token
