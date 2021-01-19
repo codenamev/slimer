@@ -14,6 +14,7 @@ module Slimer
 
     def initialize(url)
       @url = url
+      add_supported_extensions
       resolve_missing_tables!
       connection.loggers << Slimer.logger if connection.loggers.empty?
     end
@@ -54,7 +55,16 @@ module Slimer
 
     private
 
+    def add_supported_extensions
+      return if connection.database_type != :postgres
+
+      connection.extension :pg_json
+      Sequel.extension :pg_json_ops
+    end
+
     def create_substances
+      return create_substances_for_postgres if connection.database_type == :postgres
+
       connection.create_table(:substances, ignore_index_errors: true) do
         primary_key :id
         String :uid
@@ -63,6 +73,17 @@ module Slimer
         String :metadata, text: true
         full_text_index :payload
         full_text_index :metadata
+      end
+    end
+
+    def create_substances_for_postgres
+      connection.create_table(:substances, ignore_index_errors: true) do
+        String :uid
+        String :group, default: Slimer::DEFAULT_GROUP
+        JSONB :payload
+        JSONB :metadata
+        index :payload, type: :gin
+        index :metadata, type: :gin
       end
     end
 

@@ -19,6 +19,9 @@ GEM
     rake (13.0.3)
     redis (4.2.5)
     sequel (5.40.0)
+    sequel_pg (1.14.0)
+      pg (>= 0.18.0, != 1.2.0)
+      sequel (>= 4.38.0)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -30,6 +33,7 @@ PLATFORMS
 DEPENDENCIES
   pg (~> 1.2)
   puma
+  sequel_pg
   slimer!
 
 BUNDLED WITH
