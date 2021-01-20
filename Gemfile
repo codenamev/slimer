@@ -7,6 +7,10 @@ gemspec
 
 gem "rake", "~> 13.0"
 
+group :development do
+  gem "gem-release"
+end
+
 group :test do
   gem "minitest", "~> 5.0"
   gem "rack-test"
