@@ -9,6 +9,10 @@ A minimalist consumer with an endless appetite.
   <small>Slimer character created by <a href="https://dribbble.com/amungioli">Anthony Mungioli</a></small>
 </figcaption>
 
+## Run for free on Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/codenamev/slimer/raw/main/examples/heroku)
+
 ## Installation
 
 Add this line to your application's Gemfile:
