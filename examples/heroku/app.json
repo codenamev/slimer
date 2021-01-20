@@ -3,7 +3,7 @@
   "description": "",
   "keywords": ["Ruby", "Redis", "data"],
   "website": "https://github.com/codenamev/slimer",
-  "repository": "https://github.com/codenamev/slimer",
+  "repository": "https://github.com/codenamev/slimer/tree/main/examples/heroku",
   "logo": "https://github.com/codenamev/slimer/raw/main/examples/heroku/heroku-button-logo.jpeg",
   "success_url": "/status",
   "env": {

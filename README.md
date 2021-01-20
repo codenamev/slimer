@@ -11,7 +11,7 @@ A minimalist consumer with an endless appetite.
 
 ## Run for free on Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/codenamev/slimer/raw/main/examples/heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/codenamev/slimer/tree/main/examples/heroku)
 
 ## Installation
 
