@@ -10,6 +10,7 @@ module Slimer
   class Database
     attr_reader :url
 
+    MAX_CONNECTION_RETRIES = 10
     REQUIRED_TABLES = %i[api_keys substances].freeze
 
     def initialize(url)
@@ -29,7 +30,11 @@ module Slimer
     end
 
     def connection
+      retry_count = 1
       @connection ||= Sequel.connect(url)
+    rescue Sequel::DatabaseConnectionError
+      Slimer.logger.warn "Waiting for database to become available... #{retry_count}"
+      sleep 1 and retry if retry_count >= MAX_CONNECTION_RETRIES
     end
     alias connect connection
 
