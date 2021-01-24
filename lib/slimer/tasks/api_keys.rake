@@ -5,8 +5,13 @@ namespace :slimer do
     desc "Generate a Slimer API key"
     task :generate do
       name = loop do
-        puts "Enter a name for this API key: "
-        new_name = $stdin.gets.chomp
+        new_name = ARGV[1].to_s
+
+        if new_name.empty?
+          puts "Enter a name for this API key: "
+          new_name = $stdin.gets.chomp
+        end
+
         break new_name unless new_name.to_s.empty?
 
         puts "You must enter a name for this API key."
