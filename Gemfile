@@ -17,7 +17,8 @@ group :test do
 end
 
 group :development, :test do
-  gem "rubocop", "~> 1.8"
+  gem "rainbow", ">= 3.1.0", github: "sickill/rainbow"
+  gem "rubocop", "~> 0.81" # This version supports Ruby 2.3
   gem "rubocop-minitest"
   gem "rubocop-performance", require: false
   gem "rubocop-rake"
