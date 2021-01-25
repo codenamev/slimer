@@ -8,6 +8,6 @@
 /tmp/*
 
 **/*.log
-**/slimer.db
+**/*.db
 
 .ruby-version
