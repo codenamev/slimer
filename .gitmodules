@@ -1,0 +1,6 @@
+[submodule "examples/docker"]
+	path = examples/docker
+	url = git@github.com:codenamev/slimer-example-docker.git
+[submodule "examples/heroku"]
+	path = examples/heroku
+	url = git@github.com:codenamev/slimer-example-heroku.git
