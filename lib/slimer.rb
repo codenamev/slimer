@@ -6,6 +6,7 @@ require_relative "slimer/database"
 require_relative "slimer/group_configurator"
 
 require "logger"
+require "set"
 
 # @abstract
 module Slimer

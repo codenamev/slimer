@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "rake"
 
 class SlimerRakeTest < Minitest::Test
   def setup
