@@ -9,7 +9,7 @@ class SlimerApiKeyTest < Minitest::Test
   end
 
   def test_count
-    assert Slimer::ApiKey.count.zero?
+    assert_predicate(Slimer::ApiKey.count, :zero?)
   end
 
   def test_generate

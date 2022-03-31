@@ -10,7 +10,7 @@ class SlimerSubstanceTest < Minitest::Test
   end
 
   def test_count
-    assert Slimer::Substance.count.zero?
+    assert_predicate(Slimer::Substance.count, :zero?)
   end
 
   def test_consume_min
