@@ -62,7 +62,7 @@ class SlimerTest < Minitest::Test
 
   def test_configure_sidekiq_client
     mock = Minitest::Mock.new
-    mock.expect(:configure_client, proc {}) # rubocop:disable Lint/EmptyBlock
+    mock.expect(:configure_client, proc {})
     Slimer.stub_const(:Sidekiq, mock) do
       Slimer.configure(&:configure_sidekiq_client)
     end
@@ -71,9 +71,10 @@ class SlimerTest < Minitest::Test
 
   def test_configure_sidekiq_server
     mock = Minitest::Mock.new
-    mock.expect(:configure_server, proc {}) # rubocop:disable Lint/EmptyBlock
+    mock.expect(:configure_server, proc {})
     Slimer.stub_const(:Sidekiq, mock) do
       Slimer.configure(&:configure_sidekiq_server)
+      Sidekiq.strict_args!
     end
     assert mock.verify
   end

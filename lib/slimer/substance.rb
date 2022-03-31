@@ -12,9 +12,9 @@ module Slimer
       group = options.delete(:group) || Slimer::DEFAULT_GROUP
 
       Slimer::Workers::IngestSubstance.perform_async(
-        payload,
-        group,
-        metadata
+        payload.transform_keys(&:to_s),
+        group.to_s,
+        metadata&.transform_keys(&:to_s)
       )
     end
   end

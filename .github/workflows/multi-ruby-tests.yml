@@ -2,9 +2,14 @@ name: Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+    types:
+      - review_requested
+      - ready_for_review
 
 jobs:
   test:
@@ -12,19 +17,13 @@ jobs:
       fail-fast: true
       matrix:
         os: [ ubuntu-latest, macos-latest ]
-        ruby: ['2.6.6', '2.7.2', '3.0.0']
+        ruby: ['2.7.5', '3.0.3', '3.1.1']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
       - name: bundle install
         run: |
           bundle config path vendor/bundle

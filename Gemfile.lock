@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slimer (0.1.0)
+    slimer (0.1.2)
       rack (~> 2.0)
       rake (~> 13.0)
       sequel (>= 5.40)
@@ -10,63 +10,62 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ast (2.4.1)
+    ast (2.4.2)
     connection_pool (2.2.5)
-    gem-release (2.2.0)
-    minitest (5.14.3)
+    gem-release (2.2.2)
+    minitest (5.15.0)
     minitest-stub-const (0.6)
-    parallel (1.20.1)
-    parser (3.0.0.0)
+    parallel (1.22.1)
+    parser (3.1.1.0)
       ast (~> 2.4.1)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rainbow (3.0.0)
-    rake (13.0.3)
-    redis (4.5.1)
-    regexp_parser (2.0.3)
+    rainbow (3.1.1)
+    rake (13.0.6)
+    redis (4.6.0)
+    regexp_parser (2.2.1)
     rexml (3.2.5)
-    rubocop (1.8.1)
+    rubocop (1.26.1)
       parallel (~> 1.10)
-      parser (>= 3.0.0.0)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.2.0, < 2.0)
+      rubocop-ast (>= 1.16.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.4.0)
-      parser (>= 2.7.1.5)
-    rubocop-minitest (0.10.3)
-      rubocop (>= 0.87, < 2.0)
-    rubocop-performance (1.9.2)
-      rubocop (>= 0.90.0, < 2.0)
+    rubocop-ast (1.16.0)
+      parser (>= 3.1.1.0)
+    rubocop-minitest (0.18.0)
+      rubocop (>= 0.90, < 2.0)
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rake (0.5.1)
-      rubocop
-    rubocop-rspec (2.1.0)
+    rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
+    rubocop-rspec (2.9.0)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    sequel (5.40.0)
-    sidekiq (6.4.0)
+    sequel (5.54.0)
+    sidekiq (6.4.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
     sqlite3 (1.4.2)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
 
 PLATFORMS
-  x86_64-darwin-20
-  x86_64-linux
+  x86_64-darwin-21
 
 DEPENDENCIES
   gem-release
-  minitest (~> 5.0)
+  minitest
   minitest-stub-const
   rack-test
-  rake (~> 13.0)
-  rubocop (~> 1.8)
+  rainbow (>= 3.1.0)
+  rake
+  rubocop
   rubocop-minitest
   rubocop-performance
   rubocop-rake
@@ -75,4 +74,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   2.2.3
+   2.3.7
