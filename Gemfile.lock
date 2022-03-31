@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/sickill/rainbow.git
-  revision: 397ab84c299ec75c9eda563acbf68cf3f4d17f35
-  specs:
-    rainbow (3.1.1)
-
 PATH
   remote: .
   specs:
@@ -27,31 +21,31 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rainbow (3.1.1)
     rake (13.0.6)
     redis (4.6.0)
     regexp_parser (2.2.1)
     rexml (3.2.5)
-    rubocop (0.93.1)
+    rubocop (1.26.1)
       parallel (~> 1.10)
-      parser (>= 2.7.1.5)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8)
+      regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 0.6.0)
+      rubocop-ast (>= 1.16.0, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
+      unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.16.0)
       parser (>= 3.1.1.0)
     rubocop-minitest (0.18.0)
       rubocop (>= 0.90, < 2.0)
-    rubocop-performance (1.10.2)
-      rubocop (>= 0.90.0, < 2.0)
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rake (0.5.1)
-      rubocop
-    rubocop-rspec (1.44.1)
-      rubocop (~> 0.87)
-      rubocop-ast (>= 0.7.1)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (2.9.0)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     sequel (5.54.0)
     sidekiq (6.4.1)
@@ -59,19 +53,19 @@ GEM
       rack (~> 2.0)
       redis (>= 4.2.0)
     sqlite3 (1.4.2)
-    unicode-display_width (1.8.0)
+    unicode-display_width (2.1.0)
 
 PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
   gem-release
-  minitest (~> 5.0)
+  minitest
   minitest-stub-const
   rack-test
-  rainbow (>= 3.1.0)!
-  rake (~> 13.0)
-  rubocop (~> 0.81)
+  rainbow (>= 3.1.0)
+  rake
+  rubocop
   rubocop-minitest
   rubocop-performance
   rubocop-rake
