@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     slimer (0.1.2)
-      rack (~> 2.0)
+      rack (>= 2, < 4)
       rake (~> 13.0)
       sequel (>= 5.40)
       sidekiq (>= 6.1)
@@ -18,7 +18,7 @@ GEM
     parallel (1.22.1)
     parser (3.1.1.0)
       ast (~> 2.4.1)
-    rack (2.2.3.1)
+    rack (2.2.6.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rainbow (3.1.1)
